@@ -146,7 +146,7 @@
 
 
 
-    
+
     // Close Add promo
     jQuery("body").on("click", ".close__icon, .promo__cancel", function(e) {
         
@@ -158,17 +158,18 @@
         jQuery('.item__title input').val('');
         jQuery('.item__link input').val('');
         jQuery('.item__desc textarea').val('');
+
+        jQuery('.error').empty();
     });
 
     // Update promo 
-    jQuery("body").on("click", ".close__icon, .promo__cancel", function(e) {
+    jQuery("body").on("click", ".promo__add", function(e) {
         
         e.preventDefault();
-        
-        jQuery('.glob__promo_new').removeClass("promo__layer");
-
+        /*
         jQuery('.camera img').attr('src');
         jQuery('.item__title input').val();
         jQuery('.item__link input').val();
         jQuery('.item__desc textarea').val();
+        */
     });
