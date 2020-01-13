@@ -45,14 +45,40 @@
 .supImg.show.ing{
     display: block;
 }
+.error{
+    color: red
+}
 
 
 <!-- 
 	JS 
 -->    
 
+    
+    // Our Promo fill the fields 
+    jQuery("body").on("click", ".update__promo", function() {
 
-    //function showing uploaded image In Our Promo
+        var parent_ = jQuery(this).parent();
+
+        var span_img = parent_.attr("style");
+        var getImg = span_img.split("(")[1].slice(0, -1);
+        var span_url = parent_.attr("href");//undefined
+
+        var span_text = parent_.find("h4").text();
+        var span_desc = parent_.find("p").text();
+
+        jQuery('.camera img').attr('src', getImg);
+        jQuery('.item__title input').val(span_text).focus();
+        jQuery('.item__link input').val(span_url);//empty
+        jQuery('.item__desc textarea').val(span_desc);
+
+        jQuery('.error').empty();
+
+        jQuery('.glob__promo_new ').addClass("promo__layer");
+
+    });
+
+     //function showing uploaded image In Our Promo
     jQuery("body").on("change", "input#fileOurPromo", function() {
 
         jQuery('.error').empty();
@@ -80,9 +106,7 @@
                 }
                 else {
                     // IF THE FILE IS NOT AN IMAGE.
-                    jQuery('.error').text('THE FILE IS NOT AN IMAGE').css({
-                        'color': 'red'
-                    });
+                    jQuery('.error').text('THE FILE IS NOT AN IMAGE');
                     return;
                 }
             }
@@ -108,13 +132,11 @@
                         //IF IMAGE MATCH THE RECOMMANDATIONS
                         if(Math.round((file.size / 1024))<1024 && w >= recommandedW && h >= recommandedH && (aspectW-pixel) < w && w < (aspectW+pixel)){ 
                             jQuery(fi).siblings('.camera').children('img').attr('src', this.src);  
-                            jQuery('.supImg').addClass('show');
+                            jQuery('.supImg').addClass('show');console.log("f");
                         }
                         else {
                             // IF IMAGE NOT MATCHING THE RECOMMANDATIONS
-                            jQuery('.error').text('Size of image not matching the recommandation').css({
-                                'color': 'red'
-                            });
+                            jQuery('.error').text('Size of image not matching the recommandation');
                             return;
                         }
                     }
