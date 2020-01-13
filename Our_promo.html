@@ -132,7 +132,7 @@
                         //IF IMAGE MATCH THE RECOMMANDATIONS
                         if(Math.round((file.size / 1024))<1024 && w >= recommandedW && h >= recommandedH && (aspectW-pixel) < w && w < (aspectW+pixel)){ 
                             jQuery(fi).siblings('.camera').children('img').attr('src', this.src);  
-                            jQuery('.supImg').addClass('show');console.log("f");
+                            jQuery('.supImg').addClass('show');
                         }
                         else {
                             // IF IMAGE NOT MATCHING THE RECOMMANDATIONS
