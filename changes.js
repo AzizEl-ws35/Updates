@@ -1,9 +1,38 @@
-    //Add Elements in Realrate on click Realrate Btn
 
-    jQuery("body").on("click",".rr__button *",function(){
-        jQuery(".rr__offers_div > a, .rr__offers_div > span").each(function(){
-            if($(this).find(".update__promo").length < 1 ){
-                $(this).prepend('<span class="update__promo"><i class="icofont-ui-settings"></i></span>');
+    ApplyGeneratedStyle: function(Elements) {
+
+        if(Elements != undefined){
+            let fontFamily = '';
+            if(Elements['DefaultFont'] != undefined){
+                if(Elements['DefaultFont'] == ''){
+                    fontFamily = '';
+                    FontsAvailableLink= '';
+                }else{
+                    fontFamily = (".rr__button *, .rr__container *:not(.fa-star):not(.RRicon):not(.icofont-ui-settings):not(.RRicon-settings){font-family:'"+ Elements['DefaultFont'])+"'!important}";     
+                    FontsAvailableLink = (Elements['DefaultFont'] == 'inherit')? '' : "@import url('https://fonts.googleapis.com/css?family="+ (Elements['DefaultFont']).trim().replace(' ','+') +"&display=swap');"; 
+                } 
+                
+            } 
+            
+            Style = FontsAvailableLink + fontFamily +".rr__button_cta{background-color:" + Elements['BookingFullButton']['bgColor'] + ";color:" + Elements['BookingFullButton']['color'] + "}.rr__button_cta:hover{background-color:" + Elements['BookingFullButtonHover']['bgColor'] + ";color:" + Elements['BookingFullButtonHover']['color'] + "}.rr__container{background-color:" + Elements['BookingFull']['bgColor'] + "}.rr__container .rr__close{background-color:" + Elements['BookingBtnClose']['bgColor'] + "}.rr__container .rr__close .bar:after,.rr__container .rr__close .bar:before,.rr__container .rr__close:hover .bar{background-color:" + Elements['BookingBtnClose']['color'] + "}.rr__container .rr__container_body--left{background-color:" + Elements['BookingHeaderContainer']['bgColor'] + "}.rr__container .rr__label label{color:" + Elements['BookingHeaderContainer']['color'] + "}.rr__container .rr__date__item--day,.rr__container .rr__date__item--time span{color:" + Elements['BookingHeaderContainer']['color'] + "}.rr__container .rr__date__item .RRicon.RRicon-booking,.rr__container .Booking__guests__item--down .RRicon,.rr__container .Booking__guests__item--up .RRicon{color:" + Elements['BookingHeaderContainer']['color'] + "}.rr__container .rr__guests__item .value{color:" + Elements['BookingHeaderContainer']['color'] + "}.rr__container .rr__promo input{background-color:" + Elements['HeaderPromoCode']['bgColor'] + ";color:" + Elements['HeaderPromoCode']['color'] + "}::placeholder{color:" + Elements['HeaderPromoCode']['color'] + ";opacity:1}:-ms-input-placeholder{color:" + Elements['HeaderPromoCode']['color'] + "}::-ms-input-placeholder{color:" + Elements['HeaderPromoCode']['color'] + "}.rr__container .date-picker-wrapper .month-element{color:" + Elements['DatePickerMonths']['color'] + "}.rr__container .date-picker-wrapper table .caption .next::before,.rr__container .date-picker-wrapper table .caption .prev::before{color:" + Elements['DatePickerArrows']['color'] + "}.rr__container .date-picker-wrapper .month-wrapper table .week-name th{background-color:" + Elements['DatePickerDays']['bgColor'] + ";color:" + Elements['DatePickerDays']['color'] + "}.rr__container .date-picker-wrapper .month-wrapper table .day.checked,.rr__container .date-picker-wrapper .month-wrapper table .day.toMonth.hovering,.rr__container .rr__grpLegend .ui-state-active{background:" + Elements['DatePickerSelectedlDates']['bgColor'] + "!important;color:" + Elements['DatePickerSelectedlDates']['color'] + "!important}.RealRate-BB-container .has-price.realrate-custom-checked[data-RealRate-price-before]::before{color:" + Elements['DatePickerSelectedlDates']['color'] + "}.rr__container .date-picker-wrapper .first-date-selected::after{border-left:7px solid " + Elements['DatePickerSelectedlDates']['color'] + "}.rr__container .date-picker-wrapper .last-date-selected::after{border-right:7px solid " + Elements['DatePickerSelectedlDates']['color'] + "}.rr__container .date-picker-wrapper .month-wrapper table .day.toMonth.valid,.rr__container .rr__grpLegend .BECalOpen{color:" + Elements['DatePickerAvailDates']['color'] + ";background-color:" + Elements['DatePickerAvailDates']['bgColor'] + "}.rr__container .date-picker-wrapper .month-wrapper table td[status-date=Close] .day.toMonth.valid,.rr__container .rr__grpLegend .BENoAvail{color:" + Elements['DatePickerNoAvailDates']['color'] + ";background-color:" + Elements['DatePickerNoAvailDates']['bgColor'] + "}.RealRate-BB-container td[status-date=MinStay] .day,.rr__container .rr__grpLegend .BEMinLen{color:" + Elements['DatePickerMinStayDates']['color'] + "!important;background-color:" + Elements['DatePickerMinStayDates']['bgColor'] + "!important}.RealRate-BB-container td[status-date=MinStay][data-realrate-minstay-after]::after{color:" + Elements['DatePickerMinStayNumber']['color'] + ";background-color:" + Elements['DatePickerMinStayNumber']['bgColor'] + "}.RealRate-BB-container table tr td.has-price::before{color:" + Elements['DatePrices']['color'] + "}.RealRate-BB-container table tr td.has-price[status-date=MinStay]::before{color:" + Elements['DatePricesMinStay']['color'] + "}.RealRate-BB-container .LegendItem{color:" + Elements['LegendItem']['color'] + "}.rr__container .item_offer,.rr__container .item_offer h4::before{color:" + Elements['pubItem']['color'] + "}.rr__container .item_offer{background-color:" + Elements['pubItem']['bgColor'] + "}.rr__container .rr__container_body--right .rr__title{color:" + Elements['BookingSummaryTitle']['color'] + ";background-color:" + Elements['BookingSummaryTitle']['bgColor'] + "}.rr__container .rr__infos{color:" + Elements['BookingSummaryInfo']['color'] + "}.rr__container .rt__popup_header{color:" + Elements['RatingWidgetTitle']['color'] + ";background-color:" + Elements['RatingWidgetTitle']['bgColor'] + "} .rt__popup_header.rr__map_bs_title {color:" + Elements['BookingSummaryTitle']['color'] + ";background-color:" + Elements['BookingSummaryTitle']['bgColor'] + "} .rr__container .rt__popup_body--total .rat{color:" + Elements['RatingWidgetTotal']['color'] + "}@keyframes change_color{100%{color:" + Elements['RatingWidgetStars']['color'] + "}}.rr__container .rr__xtease_title{color:" + Elements['XteaseWidgetTitle']['color'] + "; background-color:" + Elements['XteaseWidgetTitle']['bgColor'] + "}.rr__container .rr__xtease_body-name{color:" + Elements['XteaseWidgetPlatformTitle']['color'] + "}.rr__container .rr__xtease_body--p{color:" + Elements['XteaseWidgetPlatformPrice']['color'] + "}.rr__container .rr__submit{color:" + Elements['BookDirectButton']['color'] + ";background-color:" + Elements['BookDirectButton']['bgColor'] + "}.rr__container .rr__submit--price,.rr__container span.rr__submit--currency{ color:" + Elements['BookDirectButton']['color'] + "}.rr__container .rr__modifiy a{color:" + Elements['ModifyOrCancelLabel']['color'] + "}";
+
+            if(Elements['PromoSlogan'] != undefined){
+                for(const lang in Elements['PromoSlogan']){
+                    if (Elements['PromoSlogan'].hasOwnProperty(lang)) {
+                        for(const promo in Elements['PromoSlogan'][lang]){
+                            if (Elements['PromoSlogan'][lang].hasOwnProperty(promo)) {
+                                Style += ".rr__container[data-realrate-lang='RR_Lang_"+ lang.toUpperCase() +"']  .rr__promo_have_image.item_offer[data-realrate-promo-id='"+promo+"'] h4, .rr__offers_div[data-realrate-lang='"+ lang.toUpperCase() +"'] .rr__promo_have_image.item_offer[data-realrate-promo-id='"+promo+"'] h4{color:" + Elements['PromoSlogan'][lang][promo].color + "!important;background-color:"+Elements['PromoSlogan'][lang][promo].bgColor+"!important}";
+                            }
+                        }
+                        }
+                }
             }
-        });
-    });
+
+            if (jQuery(".generated_style_rr").length > 0) {
+                jQuery(".generated_style_rr").text(Style);
+            } else {
+                jQuery("html head").append("<style class='generated_style_rr'>" + Style + "</style>");
+            }
+            jQuery('.view_show_container-offers .rr__offers_div *').css('font-family',Elements['DefaultFont']);
+        }
+    }
